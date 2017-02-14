@@ -49,3 +49,19 @@ gulp
   ```
 
 5. Copy the public URL ngrok gives you and run it through [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/).
+
+## Optimizations
+
+#### Website Optimizations
+A PageSpeed score of over 90 was achieved with the following techniques:
+* Inlining critical CSS to index.html
+* Using `media` param for CSS tags.
+* Moved javascript to the bottom of the page.
+* Added `async` to non-critical javascript such as google analytics to prevent the page from being blocked.
+* Asynchronously loaded fonts using WebFontLoader
+* Reduced file size by minifying text files and compressing images.
+
+#### Browser Rendering Optimizations
+60fps rendering speeds were achieved with the following techniques:
+* Using `requestAnimationFrame()` to allow the browser to run any necessary javascript before a frame is compiled.
+* Removing cases where expensive layout property calls were called multiple times in a loop unnecessarily.
