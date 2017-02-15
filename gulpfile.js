@@ -9,7 +9,7 @@ var gulp  = require('gulp'),
     uglify = require('gulp-uglify'),
     pump = require('pump');
 
-gulp.task('default', ['min-css', 'min-html', 'min-images', 'min-js']);
+gulp.task('default', ['min-css', 'min-html', 'min-images', 'min-js', 'watch']);
 
 gulp.task('min-css', function() {
   return gulp.src('app/css/*.css')
@@ -37,4 +37,9 @@ gulp.task('min-js', function(cb) {
     ],
     cb
   );
+});
+
+gulp.task('watch', function() {
+  gulp.watch('app/css/*.css', ['min-css']);
+  gulp.watch('app/*.html', ['min-html']);
 });

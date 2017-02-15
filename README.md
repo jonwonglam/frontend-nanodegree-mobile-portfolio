@@ -65,3 +65,5 @@ A PageSpeed score of over 90 was achieved with the following techniques:
 60fps rendering speeds were achieved with the following techniques:
 * Using `requestAnimationFrame()` to allow the browser to run any necessary javascript before a frame is compiled.
 * Removing cases where expensive layout property calls were called multiple times in a loop unnecessarily.
+* Used hardware accelerated CSS by using `transform: translate3d(0,0,0)` and `backface-visibility: hidden`.
+* Used `document.getElementById` and `.getElementsByClassName` instead of `.querySelector`.
