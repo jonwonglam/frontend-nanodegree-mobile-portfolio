@@ -5,9 +5,11 @@ var gulp  = require('gulp'),
     gutil = require('gulp-util'),
     cleanCSS = require('gulp-clean-css'),
     htmlmin = require('gulp-htmlmin'),
-    imagemin = require('gulp-imagemin');
+    imagemin = require('gulp-imagemin'),
+    uglify = require('gulp-uglify'),
+    pump = require('pump');
 
-gulp.task('default', ['min-css', 'min-html', 'min-images']);
+gulp.task('default', ['min-css', 'min-html', 'min-images', 'min-js']);
 
 gulp.task('min-css', function() {
   return gulp.src('app/css/*.css')
@@ -25,4 +27,14 @@ gulp.task('min-images', function() {
   gulp.src('app/img/*')
         .pipe(imagemin())
         .pipe(gulp.dest('dist/img'));
+});
+
+gulp.task('min-js', function(cb) {
+  pump([
+      gulp.src('app/js/*.js'),
+      uglify(),
+      gulp.dest('dist/js')
+    ],
+    cb
+  );
 });
