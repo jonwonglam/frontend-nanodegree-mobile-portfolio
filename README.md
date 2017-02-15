@@ -67,3 +67,4 @@ A PageSpeed score of over 90 was achieved with the following techniques:
 * Removing cases where expensive layout property calls were called multiple times in a loop unnecessarily.
 * Used hardware accelerated CSS by using `transform: translate3d(0,0,0)` and `backface-visibility: hidden`.
 * Used `document.getElementById` and `.getElementsByClassName` instead of `.querySelector`.
+* Wrapped `updatePositions()` in a requestAnimationFrame whenever scroll event happened.
